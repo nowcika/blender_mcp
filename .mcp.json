@@ -3,7 +3,7 @@
     "blender": {
       "type": "stdio",
       "command": "python3",
-      "args": ["-m", "server", "--transport", "stdio"]
+      "args": ["start_server.py"]
     }
   }
 }

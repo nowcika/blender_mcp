@@ -131,22 +131,21 @@ claude        # .mcp.json을 자동으로 읽어서 blender MCP 활성화
 
 ### 방법 2 — 어디서나 사용하도록 전역 등록
 
-터미널에서 아래 명령어 한 번 실행:
+`/절대경로/blender_mcp` 를 실제 경로로 바꿔서 터미널에 입력:
 
 ```bash
-claude mcp add --scope user blender -- python3 -m server --transport stdio
+claude mcp add --scope user blender python3 /절대경로/blender_mcp/start_server.py
+```
+
+예시 (Windows):
+```bash
+claude mcp add --scope user blender python3 C:/Users/yourname/blender_mcp/start_server.py
 ```
 
 등록 확인:
-
 ```bash
 claude mcp list
-# blender (stdio) - python3 -m server --transport stdio
 ```
-
-> **주의**: 전역 등록 시 `python3 -m server` 는 현재 폴더를 기준으로 실행됩니다.  
-> `blender_mcp` 폴더 밖에서 claude를 실행하면 서버를 찾지 못합니다.  
-> 이 경우 방법 1(프로젝트 폴더 내 실행)을 권장합니다.
 
 ---
 
