@@ -1,0 +1,16 @@
+schema_version = "1.0.0"
+
+id = "blender_mcp"
+version = "1.0.0"
+name = "Blender MCP"
+tagline = "MCP server for AI-driven Blender control"
+maintainer = "blender_mcp"
+type = "add-on"
+
+# Blender 4.2+ Extension system (required for Blender 5.x compatibility)
+blender_version_min = "4.2.0"
+
+license = ["SPDX:GPL-3.0-or-later"]
+
+[permissions]
+network = "Localhost socket server for MCP communication"
