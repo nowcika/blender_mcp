@@ -115,6 +115,41 @@ cd ..
 
 ---
 
+## Claude Code (터미널 CLI) 연동
+
+Claude Desktop 대신 터미널에서 `claude` 명령어를 사용하는 경우입니다.
+
+### 방법 1 — 프로젝트 폴더에서 자동 인식 (권장)
+
+이 저장소에는 `.mcp.json` 파일이 포함되어 있습니다.  
+`blender_mcp` 폴더 안에서 `claude`를 실행하면 **자동으로 MCP 서버가 등록**됩니다.
+
+```bash
+cd blender_mcp
+claude        # .mcp.json을 자동으로 읽어서 blender MCP 활성화
+```
+
+### 방법 2 — 어디서나 사용하도록 전역 등록
+
+터미널에서 아래 명령어 한 번 실행:
+
+```bash
+claude mcp add --scope user blender -- python3 -m server --transport stdio
+```
+
+등록 확인:
+
+```bash
+claude mcp list
+# blender (stdio) - python3 -m server --transport stdio
+```
+
+> **주의**: 전역 등록 시 `python3 -m server` 는 현재 폴더를 기준으로 실행됩니다.  
+> `blender_mcp` 폴더 밖에서 claude를 실행하면 서버를 찾지 못합니다.  
+> 이 경우 방법 1(프로젝트 폴더 내 실행)을 권장합니다.
+
+---
+
 ## HTTP/SSE 모드 (원격 접속)
 
 로컬이 아닌 원격 서버에서 Blender를 제어할 때 사용합니다.
