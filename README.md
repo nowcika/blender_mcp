@@ -46,27 +46,39 @@ pip install -r requirements.txt
 
 > `requirements.txt` 내용: `mcp>=1.0.0`
 
-### 3단계 — Blender Add-on 설치
+### 3단계 — Blender 애드온 설치
 
-Blender 5.x (Extension 방식):
+먼저 `addon/` 폴더를 zip 파일로 압축합니다:
 
-1. Blender 상단 메뉴 → **Edit → Preferences → Add-ons**
-2. 우측 상단 **드롭다운(⌄) → Install from Disk** 클릭
-3. 저장소의 `addon/` 폴더를 zip으로 압축
+```bash
+# 터미널에서 프로젝트 루트 위치에서 실행
+cd addon
+zip -r ../blender_mcp_addon.zip .
+cd ..
+```
 
-   ```bash
-   # 프로젝트 루트에서 실행
-   zip -r blender_mcp_addon.zip addon/
-   ```
+이제 Blender에 설치합니다:
 
-4. 압축된 `blender_mcp_addon.zip` 선택 후 **Install Add-on** 클릭
-5. 목록에서 **"Blender MCP"** 항목 체크(활성화)
+1. Blender 화면 맨 위 메뉴에서 **편집(Edit)** 클릭
+2. **환경설정(Preferences)** 클릭
+3. 환경설정 창 왼쪽에서 **애드온(Add-ons)** 클릭
+4. 우측 상단 **드롭다운 화살표(⌄)** → **디스크에서 설치(Install from Disk)** 클릭
+5. 방금 만든 `blender_mcp_addon.zip` 파일 선택
+6. **애드온 설치(Install Add-on)** 버튼 클릭
+7. 목록에 나타난 **"Blender MCP"** 항목 왼쪽 체크박스를 클릭해서 활성화
 
 ### 4단계 — Blender에서 소켓 서버 시작
 
-1. Blender **3D Viewport** → 우측 **N** 키 → **MCP** 탭
-2. **Start MCP Server** 버튼 클릭
-3. 상태가 `Running` 으로 변경되면 준비 완료
+> **3D 뷰포트란?** Blender를 열면 가운데에 큰 3D 공간이 보입니다. 오브젝트를 배치하고 조작하는 메인 작업 화면입니다.
+> **사이드바란?** 3D 뷰포트 안에서 키보드 **N** 키를 누르면 오른쪽에서 패널이 열립니다. 이것이 사이드바입니다.
+
+1. Blender 가운데 **3D 뷰포트** 영역 위에 마우스 커서를 올려놓기
+2. 키보드 **N** 키 누르기 → 오른쪽에 사이드바 패널이 열림
+3. 사이드바 상단 탭 중 **MCP** 탭 클릭
+4. **Start MCP Server** 버튼 클릭
+5. 버튼 위 상태 표시가 `Running` 으로 바뀌면 준비 완료
+
+> **N 키가 안 먹힐 때**: 마우스 커서가 3D 뷰포트 안에 있는지 확인하세요. Blender는 마우스 위치에 따라 단축키가 달라집니다.
 
 > 기본 포트: `9999`. 변경하려면 환경변수 설정:
 > ```bash
@@ -170,16 +182,16 @@ Claude Desktop 채팅창에서:
 ### "Blender is not running" 오류
 
 - Blender가 실행 중인지 확인
-- N-Panel → MCP → **Start MCP Server** 버튼을 눌렀는지 확인
+- 3D 뷰포트에서 **N 키** → **MCP 탭** → **Start MCP Server** 버튼을 눌렀는지 확인
 - 방화벽이 포트 9999를 차단하고 있지 않은지 확인
 
-### Add-on이 목록에 나타나지 않을 때
+### 애드온이 목록에 나타나지 않을 때
 
-- Blender 버전이 4.2 이상인지 확인
-- `addon/` 폴더가 정상적으로 zip 압축되었는지 확인 (`addon/` 내부 파일이 zip 루트에 있어야 함)
+- Blender 버전이 4.2 이상인지 확인 (화면 상단 **도움말(Help) → Blender 정보(About Blender)**에서 확인)
+- `addon/` 폴더 안의 파일들이 zip 루트에 바로 있어야 합니다. 아래 방법으로 다시 압축하세요:
 
 ```bash
-# 올바른 압축 방법
+# 올바른 압축 방법 (addon/ 폴더 안에서 실행)
 cd addon
 zip -r ../blender_mcp_addon.zip .
 cd ..
